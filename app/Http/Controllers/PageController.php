@@ -8,17 +8,16 @@ use Facebook\Facebook;
 class PageController extends Controller
 {
 	protected function index(Facebook $fb) {
-
 		$fb->setDefaultAccessToken(env('FACEBOOK_PAGE_ACCESS_TOKEN'));
 
 		try {
 			// Returns a `FacebookFacebookResponse` object
 			$videos = $fb->get('720160775280918/videos?fields=source,title,created_time,description')->getGraphEdge();
-		} catch(FacebookExceptionsFacebookResponseException $e) {
-			dd('Graph returned an error: ' . $e->getMessage());
+		} catch (\Facebook\Exceptions\FacebookSDKException $e) {
+			dd($e->error_msg);
 			exit;
-		} catch(FacebookExceptionsFacebookSDKException $e) {
-			dd('Facebook SDK returned an error: ' . $e->getMessage());
+		} catch (\Facebook\Exceptions\FacebookResponseException $e) {
+			dd($e->error_msg);
 			exit;
 		}
 		
@@ -29,8 +28,14 @@ class PageController extends Controller
 		]);
 	}
 
-	protected function privacyPolicy() {
-		return view('privacy_policy', []);
+	protected function privacyPolicy($font='Minecraftia') {
+		return view('privacy_policy', [
+			'font' => $font
+		]);
+	}
+
+	protected function privacyPolicyArial() {
+		return $this->privacyPolicy('Arial');
 	}
 
 	protected function downloads() {

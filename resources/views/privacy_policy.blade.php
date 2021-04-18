@@ -2,7 +2,7 @@
 @section('title', 'Privacy Policy')
 
 @section('body')
-<div class="container-fluid my-5 p-5 row-spacing-4" style="background-color: #303030; border-radius: 10px;" id="privacy-policy">
+<div class="container-fluid my-5 p-5 row-spacing-4 {{ $font == 'Arial' ? 'use-arial' : ''}}" style="background-color: #303030; border-radius: 10px;" id="privacy-policy">
 	<h2 class="text-center"><b>PRIVACY POLICY</b></h2>
 	<h6 class="text-center">Effective date: April 1, 2021</h6>
 
@@ -58,6 +58,16 @@
 						<li><a href="javascript:void(0);" class="text-white" data-scroll-to="#ppi20">Contact Us</a></li>
 					</ol>
 				</div>
+				<noscript>
+					<div class="card-footer text-center">
+						<h6>Contents unreadable?</h6>
+						@if (\Request::route()->getName() == 'privacy-policy')
+						<a href="{{ route('privacy-policy-standard') }}" class="btn btn-primary">Toggle Font</a>
+						@else
+						<a href="{{ route('privacy-policy') }}" class="btn btn-primary">Toggle Font</a>
+						@endif
+					</div>
+				</noscript>
 				<div class="card-footer text-center js-only">
 					<h6>Contents unreadable?</h6>
 					<button class="btn btn-primary" id="toggle-font-card">Toggle Font</button>
