@@ -1,0 +1,194 @@
+/* BREAKPOINTS START */
+
+/* SM */
+@media (min-width: 576px) {
+
+}
+
+/* MD */
+@media (min-width: 768px) {
+	.text-md-left: {
+		text-align: left !important;
+	}
+}
+
+/* LG */
+@media (min-width: 992px) {
+	.text-lg-left: {
+		text-align: left !important;
+	}
+}
+
+/* XL */
+@media (min-width: 1200px) {
+
+}
+
+/* BREAKPOINTS END */
+
+/* GLOBAL SCROLLER */
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(125, 125, 125);
+	opacity: 0.75;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(100, 100, 100);
+	opacity: 0.5;
+}
+
+/* GLOBAL SCROLLER END */
+
+body {
+	font-family: 'Minecraftia';
+}
+
+.footer a {
+	text-decoration: none;
+	color: white;
+}
+
+.footer a:hover {
+	text-decoration: none;
+	color: #ADB5BD;
+}
+
+.mt-6, .my-6 {
+	margin-top: 6rem!important;
+}
+
+.mb-6, .my-6 {
+	margin-bottom: 6rem!important;
+}
+
+.pt-6, .py-6 {
+	padding-top: 6rem!important;
+}
+
+.pb-6, .py-6 {
+	padding-bottom: 6rem!important;
+}
+
+.pt-7, .py-7 {
+	padding-top: 12rem!important;
+}
+
+.pb-7, .py-7 {
+	padding-bottom: 12rem!important;
+}
+
+.shadow {
+	box-shadow: 0px 0px 10px 2.5px #000 !important;
+}
+
+.circular-border {
+	border-radius: 25px !important;
+}
+
+.hr-thicc {
+	border-width: 2.5px;
+}
+
+.backdrop-blur {
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	-moz-backdrop-filter: blur(8px);
+	-o-backdrop-filter: blur(8px);
+}
+
+.slick-dots li button:before {
+	color: white;
+	font-size: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+	color: white;
+}
+
+.nav-link.custom-link {
+	border-bottom-color: transparent;
+	border-bottom-style: solid;
+}
+
+.active.custom-link {
+	border-bottom-color: #888;
+	border-bottom-style: inset;
+}
+
+.nav-link {
+	transition: 0.3s;
+}
+
+.nav-link:hover, .nav-link[aria-expanded=true] {
+	border-bottom-color: #888;
+	border-bottom-style: inset;
+}
+
+.dropdown-item.custom-link {
+	transition: 0.3s;
+}
+.dropdown-item.custom-link:hover {
+	background-color: #444;
+}
+
+span.custom-link {
+	cursor: default;
+}
+
+.changelog > li {
+	list-style-type: none;
+}
+
+.changelog > .add > .fa-circle {
+	color: green;
+	border-color: rgba(255, 255, 255, 0.5);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 100%;
+	font-size: .5rem;
+	vertical-align: 0.125rem;
+}
+
+.changelog > .mod > .fa-circle {
+	color: orange;
+	border-color: rgba(255, 255, 255, 0.5);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 100%;
+	font-size: .5rem;
+	vertical-align: 0.125rem;
+}
+
+.changelog > .rem > .fa-circle {
+	color: red;
+	border-color: rgba(255, 255, 255, 0.5);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 100%;
+	font-size: .5rem;
+	vertical-align: 0.125rem;
+}
+
+.row-spacing-5 > .row:first-child {
+	margin-top: 1rem;
+	margin-bottom: 3rem;
+}
+
+.row-spacing-5 > .row:last-child {
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+}
+
+.row-spacing-5 > .row {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
