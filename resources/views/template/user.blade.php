@@ -44,6 +44,11 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
 
+		{{-- Sweet Alert 2 --}}
+		<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+		<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+
 		{{-- Fontawesome --}}
 		<script src="https://kit.fontawesome.com/d4492f0e4d.js" crossorigin="anonymous"></script>
 
