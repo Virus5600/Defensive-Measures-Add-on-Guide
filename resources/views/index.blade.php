@@ -21,34 +21,18 @@
 		</noscript>
 
 		<div class="carousel js-only">
-			<div style="background: #222 url('https://i.imgur.com/oBUJhfG.gif') no-repeat center; background-size: cover;">
-				<div class="backdrop-blur">
-					<img class="mx-auto" src="https://i.imgur.com/oBUJhfG.gif"/>
+			@foreach($carousel as $c)
+			<div style="background: #222 url('{{$c->name}}') no-repeat center; background-size: cover;">
+				<div class="backdrop-lg-blur opacity-lg-100 opacity-0">
+					<img class="mx-auto" src="{{$c->name}}"/>
 				</div>
 			</div>
-			
-			<div style="background: #222 url('https://i.imgur.com/FuNB4rV.png') no-repeat center; background-size: cover;">
-				<div class="backdrop-blur">
-					<img class="mx-auto" src="https://i.imgur.com/FuNB4rV.png"/>
-				</div>
-			</div>
-			
-			<div style="background: #222 url('https://i.imgur.com/YGaoKNI.gif') no-repeat center; background-size: cover;">
-				<div class="backdrop-blur">
-					<img class="mx-auto" src="https://i.imgur.com/YGaoKNI.gif"/>
-				</div>
-			</div>
-			
-			<div style="background: #222 url('https://i.imgur.com/XvkAT5Q.gif') no-repeat center; background-size: cover;">
-				<div class="backdrop-blur">
-					<img class="mx-auto" src="https://i.imgur.com/XvkAT5Q.gif"/>
-				</div>
-			</div>
+			@endforeach
 		</div>
 	</div>
 </div>
 
-<div class="container-fluid my-5 p-5" style="background-color: #303030; border-radius: 10px;">
+<div class="container-fluid my-5 p-lg-5 p-3" style="background-color: #303030; border-radius: 10px;">
 
 	{{-- Description --}}
 	<div class="row">
@@ -58,7 +42,7 @@
 					<img src="/images/Home/Defensive Measures Add-On Banner.png"/ width="75%" draggable='false' data-toggle="modal" data-target="#banner-modal">
 					
 					<div class="modal fade" id="banner-modal" role='dialog' aria-hidden='true' style="background-color: transparent;">
-						<div class="modal-dialog modal-xl" role="document">
+						<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss='modal'>
@@ -86,34 +70,28 @@
 
 			<div class="row">
 				<div class="col text-center">
-					<a href="{{ route('downloads.changelog', ['v1.0.1-beta']) }}" class="btn btn-primary circular-border"><i class="fas fa-download mr-2"></i>Download</a>
+					<a href="{{ route('downloads.changelog', [$latest_version->version]) }}" class="btn btn-primary circular-border"><i class="fas fa-download mr-2"></i>Download</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<hr class="bg-light hr-thicc my-6">
+	<hr class="bg-light hr-thicc my-5 my-lg-6">
 
 	{{-- What's New? --}}
 	<div class="row">
 		<div class="col">
 			<h2>What's New?</h2>
-			<h4>v1.0.1-beta</h4> {{-- $latest_version --}}
-			<p>
-				{{-- $latest_version_description --}}
-				A new update has been released! A new turret, items and even block was implemented and will surely help defend your area!<br>
-				<br>
-				I present to you the Ballista! A medieval siege weapon that shoots large bolts of arrow towards enemy. The Ballista shoots much faster than the Cannon Turret, but has less health and deals less damage. The cheap crafting recipe of this turret allows you to create an early defense system for your world, in a sense, the durability of this turret is also lower than that of iron-clad Cannon Turret.
-			</p>
+			<h4>{{ $latest_version->version }}</h4>
+			<div>{!! $latest_version->description !!}</div>
 
-			{{-- $latest_version_link --}}
 			<div class="text-center">
-				<img src="https://i.imgur.com/YGaoKNI.gif" style="width: 50vw !important;">
+				<img src="{{$latest_version->banner}}" style="width: 50vw !important;">
 			</div>
 		</div>
 	</div>
 
-	<hr class="bg-light hr-thicc my-6">
+	<hr class="bg-light hr-thicc my-5 my-lg-6">
 	
 	{{-- Recent Facebook Videos --}}
 	<h2>Recent Facebook Videos</h2>
@@ -131,7 +109,7 @@
 			<div class="col">
 					<h4 class="text-light">{{$v['title']}}</h4>
 					<div class="text-center">
-						<video src="{{$v['source']}}" class="w-50" controls></video>
+						<video src="{{$v['source']}}" class="w-100 w-md-50" controls></video>
 					</div>
 					<p class="text-light">{{$v['description']}}</p>
 			</div>
@@ -145,7 +123,7 @@
 		</div>
 	</div>
 
-	<hr class="bg-light hr-thicc my-6">
+	<hr class="bg-light hr-thicc my-5 my-lg-6">
 
 	<div class="row">
 		<div class="col text-center">
@@ -172,9 +150,10 @@
 				</div>
 			</div>
 			<br>
+			
 			{{-- Discord Embed --}}
-			<div class="embed-responsive embed-responsive-21by9">
-				<iframe class="embed-responsive-item" title='Discord DMA' src="https://titanembeds.com/embed/788405566250680331?css=0&defaultchannel=788409927915012156&fixedsidenav=true&scrollbartheme=dark&theme=DiscordDark&userscalable=false" frameborder="0"></iframe><br>
+			<div class="embed-responsive embed-responsive-21by9 h-100vh h-md-auto">
+				<iframe class="embed-responsive-item" title='Discord DMA' src="https://titanembeds.com/embed/788405566250680331?css=0&defaultchannel=788409927915012156&fixedsidenav=true&scrollbartheme=dark&theme=DiscordDark&userscalable=false" frameborder="1"></iframe><br>
 			</div>
 			<br>
 			<h2>OR</h2>

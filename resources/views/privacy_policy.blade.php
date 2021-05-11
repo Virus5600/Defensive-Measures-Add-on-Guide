@@ -337,7 +337,7 @@
 			toast: true,
 			confirmButtonColor: `#375a7f`,
 			customClass: {
-				popup: `flex-dir-col-imp`
+				popup: `flex-d-col-imp`
 			}
 		}).then((result) => {
 			if (result.isConfirmed) {
@@ -354,7 +354,7 @@
 			toast: true,
 			confirmButtonColor: `#375a7f`,
 			customClass: {
-				popup: `flex-dir-col-imp`
+				popup: `flex-d-col-imp`
 			}
 		}).then((result) => {
 			if (result.isConfirmed) {

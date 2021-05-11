@@ -13,7 +13,8 @@
 	</div>
 </div>
 
-<div class="container-fluid my-5 p-5" style="background-color: #303030; border-radius: 10px;">
+<div class="container-fluid my-5 p-lg-5 p-3" style="background-color: #303030; border-radius: 10px;">
+	@if (count($versions->where('type', 'beta')) > 0)
 	<div class="row">
 		<div class="col">
 			<h2>Beta Versions</h2>
@@ -24,7 +25,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col">
+		<div class="col overflow-x-auto">
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -35,29 +36,22 @@
 				</thead>
 
 				<tbody>
+					@foreach ($versions->where('type', 'beta') as $v)
 					<tr>
-						<td><a href="{{ route('downloads.changelog', ['v1.0.1-beta']) }}">v1.0.1-beta</a></td>
-						<td>Dec 18, 2020</td>
-						<td class="text-right">
-							<a href="http://extrecey.com/24jv" target="_blank" class="btn btn-primary circular-border redirect-to-installation"><i class="fas fa-download mr-2"></i>Win 10</a>
-							<a href="http://extrecey.com/24ap" target="_blank" class="btn btn-primary circular-border redirect-to-installation"><i class="fas fa-download mr-2"></i>Mobile</a>
-							<a href="{{ route('downloads.changelog', ['v1.0.1-beta']) }}" class="btn btn-primary circular-border">Changelog</a>
+						<td><a href="{{ route('downloads.changelog', [$v->version]) }}">{{$v->version}}</a></td>
+						<td>{{$v->release_date->format("M d, Y")}}</td>
+						<td class="text-right d-flex flex-d-row">
+							<a href="{{$v->win10_link}}" target="_blank" class="ml-auto mx-1 btn btn-primary btn-sm circular-border redirect-to-installation"><i class="fas fa-download mr-2"></i>Win 10</a>
+							<a href="{{$v->mobile_link}}" target="_blank" class="mx-1 btn btn-primary btn-sm circular-border redirect-to-installation"><i class="fas fa-download mr-2"></i>Mobile</a>
+							<a href="{{ route('downloads.changelog', [$v->version]) }}" class="mx-1 btn btn-primary btn-sm circular-border">Changelog</a>
 						</td>
 					</tr>
-
-					<tr>
-						<td><a href="">v1.0-beta</a></td>
-						<td>Dec 15, 2020</td>
-						<td class="text-right">
-							<a href="http://aspedrom.com/24240885/defensive-measures-add-on-win10" target="_blank" class="btn btn-primary circular-border redirect-to-installation"><i class="fas fa-download mr-2"></i>Win 10</a>
-							<a href="http://aspedrom.com/6rDM" target="_blank" class="btn btn-primary circular-border redirect-to-installation"><i class="fas fa-download mr-2"></i>Mobile</a>
-							<a href="{{ route('downloads.changelog', ['v1.0-beta']) }}" class="btn btn-primary circular-border">Changelog</a>
-						</td>
-					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>
 	</div>
+	@endif
 </div>
 @endsection
 

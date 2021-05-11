@@ -7,6 +7,19 @@ use Facebook\Facebook;
 
 class PageController extends Controller
 {
+
+	// TEMPORARY DATABASE
+	private function getCarousel() {
+		return TmpController::getCarousel();
+	}
+	private function getVersions() {
+		return TmpController::getVersions();
+	}
+	private function getChangelog() {
+		return TmpController::getChangelog();
+	}
+
+	// PAGE CONTROLLERS
 	protected function index(Facebook $fb) {
 		$fb->setDefaultAccessToken(env('FACEBOOK_PAGE_ACCESS_TOKEN'));
 
@@ -23,8 +36,10 @@ class PageController extends Controller
 		
 		$vid = 0;
 		return view('index', [
+			'carousel' => $this->getCarousel(),
 			'videos' => $videos,
-			'vid' => $vid
+			'vid' => $vid,
+			'latest_version' => $this->getVersions()->reverse()->first()
 		]);
 	}
 
@@ -39,18 +54,30 @@ class PageController extends Controller
 	}
 
 	protected function downloads() {
-		return view('downloads/downloads', []);
+		return view('downloads/downloads', [
+			'versions' => $this->getVersions()->reverse()
+		]);
 	}
 
 	protected function changelog($version) {
+		$v = $this->getVersions()->where('version', $version)->first();
+
 		return view('downloads/changelog', [
-			'version' => $version
+			'version' => $v,
+			'changelog' => $this->getChangelog()->where('version', $v->id)
 		]);
 	}
 
 	protected function installation($type='win10') {
-
 		return view('installation', [
+			'type' => $type
+		]);
+	}
+
+	protected function contents($type='all') {
+		$append = $type == "all" ? ".index" : ".".$type;
+
+		return view('contents' . $append, [
 			'type' => $type
 		]);
 	}

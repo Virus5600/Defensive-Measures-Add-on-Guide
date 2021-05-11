@@ -3,13 +3,21 @@
 @section('title', 'Installation Guide')
 
 @section('css')
+<style type="text/css">
+	img.img-fluid.w-100[draggable=false] {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+</style>
 @endsection
 
 @section('body')
-<div class="container-fluid my-5 p-5" style="background-color: #303030; border-radius: 10px;">
+@php ($type = \Request::has('type') ? \Request::get('type') : $type)
+
+<div class="container-fluid my-5 p-lg-5 p-3" style="background-color: #303030; border-radius: 10px;">
 	<div class="row">
 		<div class="col">
-			<h2>Basic Information</h2>
+			<h2 class="h3 h2-lg">Basic Information</h2>
 			<p>
 				Author: Virus5600<br>
 				Minimum Required Version: 1.16.100<br>
@@ -23,7 +31,7 @@
 	
 	<div class="row">
 		<div class="col">
-			<h2>Installation</h2>
+			<h2 class="h3 h2-lg">Installation</h2>
 			<p>To install the Add-on, please follow the instructions provided at the "Defensive Measures Add-On Read me" file, or follow the instructions provided below:</p>
 		</div>
 	</div>
@@ -201,7 +209,172 @@
 
 				{{-- Mobile Instruction --}}
 				<div class="tab-pane fade {{ $type == 'mobile' ? 'show active' : '' }} row-spacing-5" id="mobileTab" role="tabpanel" aria-labelledby="mobile">
-					<p>1. Extract the contents of the archive to "Internal Storage/games/com.mojang".</p>
+					{{-- Step 1 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>1. Extract the contents of the archive to "Internal Storage/games/com.mojang".</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step1.png" draggable="false" alt="Figure 1"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- Step 2 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>2. Move the Behavior Pack (BP) archive to “games/com.mojang/behavior_packs”.</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step2.1.png" draggable="false" alt="Figure 2.1"/>
+								</div>
+
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step2.2.png" draggable="false" alt="Figure 2.2"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- Step 3 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>3. Move the Resource Pack (RP) archive to “games/com.mojang/resource_packs”.</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step3.1.png" draggable="false" alt="Figure 3.1"/>
+								</div>
+
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step3.2.png" draggable="false" alt="Figure 3.2"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					{{-- Step 4 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>4. Open Minecraft and create a new world. Alternatively, you can just use an existing world. Just make sure to have a backup copy of that world.</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step4.png" draggable="false" alt="Figure 4"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- Step 5 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>5. Enable both the "Additional Modding Capabilities" and "Holiday Creator Features" under the "Experiments" tab.</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step5.png" draggable="false" alt="Figure 5"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- Step 6 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>6. Go to "Behavior Packs" tab and activate "Defensive Measures Add-On (BP)".</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step6.1.png" draggable="false" alt="Figure 6.1"/>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step6.2.png" draggable="false" alt="Figure 6.2"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- Step 7 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>7. Go to "Resource Packs" tab and activate "Defensive Measures Add-On (RP)" if it is not activated yet.</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step7.png" draggable="false" alt="Figure 7"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- Step 8 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>8. Generate the world if you created a new one. If you use an existing world, you can proceed and load the world.</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step8.png" draggable="false" alt="Figure 8"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{{-- Step 9 --}}
+					<div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<p>9. Enjoy!</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-lg-6">
+									<img class="img-fluid w-100" src="/images/Installations/Mobile/step9.png" draggable="false" alt="Figure 9"/>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -211,7 +384,7 @@
 						<noscript>
 							<a class="btn btn-primary" href="#tablist">Back to Top</a>
 						</noscript>
-						<button class="btn btn-primary js-only" data-scroll-to="#tablist">Back to Top</button>
+						<button class="btn btn-primary js-only" data-scroll-to="#tablist" data-parent='body'>Back to Top</button>
 					</div>
 				</div>
 			</div>
@@ -222,7 +395,3 @@
 
 @section('script')
 @endsection
-
-{{--
-	CURRENT WORK: INSTALLATION INSTRUCTIONS
---}}
