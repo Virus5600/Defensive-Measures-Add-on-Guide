@@ -12,8 +12,8 @@
 		<meta name="type" content="website">
 		<meta name="title" content="Defensive Measures Guide">
 		<meta name="description" content="A Guide dedicated to Defensive Measures Add-on developed by Virus5600. Contains all details needed to know in DMA, ranging from installation, up to the updates released by the add-on.">
-		<meta name="image" content="{{ URL::asset('images/banner.png') }}">
-		<meta name="image:alt" content="{{ URL::asset('images/banner.alt.png') }}">
+		<meta name="image" content="{{ URL::asset('images/Home/Defensive Measures Add-On Banner.png') }}">
+		<meta name="image:alt" content="{{ URL::asset('images/Downloads/Downloads Banner.png') }}">
 		<meta name="keywords" content="Defensive, Defensive Measures, Add-on, Defensive Measures Add-on, Wiki, Guide, Defensive Measures Wiki, Defensive Measures Guide, Defensive Measures Add-on Wiki, Defensive Measures Add-on Guide, CodeSenpai, Virus5600, SatchTFF">
 		<meta name="application-name" content="Defensive Measures Add-on Guide">
 		<meta name="author" content="Virus5600">
@@ -22,8 +22,8 @@
 		<meta name="og:url" content="https://defensive-measures-wiki.000webhostapp.com/">
 		<meta name="og:type" content="website">
 		<meta name="og:title" content="Defensive Measures Guide">
-		<meta name="og:image" content="{{ URL::asset('images/banner.png') }}">
-		<meta name="og:image:alt" content="{{ URL::asset('images/banner.alt.png') }}">
+		<meta name="og:image" content="{{ URL::asset('images/Home/Defensive Measures Add-On Banner.png') }}">
+		<meta name="og:image:alt" content="{{ URL::asset('images/Downloads/Downloads Banner.png') }}">
 		<meta name="description" content="A Guide dedicated to Defensive Measures Add-on developed by Virus5600. Contains all details needed to know in DMA, ranging from installation, up to the updates released by the add-on.">
 
 		{{-- jQuery 3.2.1 --}}
