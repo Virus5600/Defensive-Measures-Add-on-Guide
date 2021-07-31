@@ -21,6 +21,12 @@
 			<h2 class="h3 h2-lg">Items</h2>
 			
 			<div class="row">
+				@foreach($contents->where('type', 'items') as $i)
+				<div class="col-2 text-center">
+					<img src="{{$i->image}}" class="card-img-top img-fluid" draggable='false' style="width: 75%; height: auto;"/>
+					<h6>{{$i->content_name}}</h6>
+				</div>
+				@endforeach
 			</div>
 			
 			<p class="text-right"><a href="{{route('contents', ['items'])}}" class="btn btn-primary text-white">View More &gt;</a></p>

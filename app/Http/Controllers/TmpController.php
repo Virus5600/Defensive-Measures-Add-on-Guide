@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Carousel;
 use App\Changelog;
+use App\Contents;
+use App\Items;
+use App\Variants;
 use App\Version;
 
 class TmpController extends Controller
@@ -183,6 +186,49 @@ class TmpController extends Controller
 				'version' => 2,
 				'type' => 'mod',
 				'changelog' => 'Reverts the custom projectile (Ballista Arrow) to its old projectile (Arrow)'
+			]
+		]);
+	}
+
+	public static function getItems() {
+		return Items::hydrate([
+			(object)[
+				'id' => 1,
+				'item_name' => 'Iron Ingot',
+				'image' => 'https://i.imgur.com/0g3T8wy.png'
+			],
+			(object)[
+				'id' => 2,
+				'item_name' => 'Gold Ingot',
+				'image' => 'https://i.imgur.com/zgYnM9q.png'
+			],
+			(object)[
+				'id' => 3,
+				'item_name' => 'Redstone Block',
+				'image' => 'https://i.imgur.com/mPaQHEK.png'
+			]
+		]);
+	}
+
+	public static function getContents() {
+		return Contents::hydrate([
+			(object)[
+				'type' => 'items',
+				'content_name' => 'Turret Remover',
+				'image' => 'https://i.imgur.com/SscmBSG.png',
+				'has_variants' => false,
+				'description' => '<p>Allows players to remove the turret without the need to destroy and re-craft the turrets all over again.</p>',
+				'usage' => '
+					<li>
+						<h3>Turrets</h3>
+						<p>Removes turrets without destroying the turrets.</p>
+					</li>',
+				'obtaining' => '
+					<li>
+						<h3>Crafting</h3>
+						<p>As for now, the only way of obtaining this tool is through crafting.</p>
+					</li>',
+				'crafting_recipe' => '|0,1,0|,|2,0,1|,|3,2,0|'
 			]
 		]);
 	}

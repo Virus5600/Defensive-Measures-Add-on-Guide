@@ -18,6 +18,12 @@ class PageController extends Controller
 	private function getChangelog() {
 		return TmpController::getChangelog();
 	}
+	private function getItems() {
+		return TmpController::getItems();
+	}
+	private function getContents() {
+		return TmpController::getContents();
+	}
 
 	// PAGE CONTROLLERS
 	protected function index(Facebook $fb) {
@@ -27,10 +33,10 @@ class PageController extends Controller
 			// Returns a `FacebookFacebookResponse` object
 			$videos = $fb->get('720160775280918/videos?fields=source,title,created_time,description')->getGraphEdge();
 		} catch (\Facebook\Exceptions\FacebookSDKException $e) {
-			dd($e->error_msg);
+			dd($e);
 			exit;
 		} catch (\Facebook\Exceptions\FacebookResponseException $e) {
-			dd($e->error_msg);
+			dd($e);
 			exit;
 		}
 		
@@ -77,8 +83,13 @@ class PageController extends Controller
 	protected function contents($type='all') {
 		$append = $type == "all" ? ".index" : ".".$type;
 
+		$contents = $this->getContents();
+		if (!$type == 'all')
+			$contents = $this->getContents()->where('type', $type);
+
 		return view('contents' . $append, [
-			'type' => $type
+			'type' => $type,
+			'contents' => $contents
 		]);
 	}
 }
