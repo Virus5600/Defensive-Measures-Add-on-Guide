@@ -54,33 +54,50 @@
 				<div class="d-flex flex-column mb-3">
 					<h4>Contents</h4>
 					<ol>
-						<li><a href="#description" class="text-white">Description</a></li>
-						<li><a href="#usage" class="text-white">Usage</a></li>
-						<li><a href="#obtaining" class="text-white">Obtaining</a></li>
-						<li><a href="#recipe" class="text-white">Crafting Recipe</a></li>
+						<li><a href="javascript:void(0);" data-scroll-to="#description" class="text-white">Description</a></li>
+						<li><a href="javascript:void(0);" data-scroll-to="#usage" class="text-white">Usage</a></li>
+						<li><a href="javascript:void(0);" data-scroll-to="#obtaining" class="text-white">Obtaining</a></li>
+						<li><a href="javascript:void(0);" data-scroll-to="#recipe" class="text-white">Crafting Recipe</a></li>
 					</ol>
 				</div>
 
 				<div id="description">
 					<h4>Description</h4>
-					{!! $item->description !!}
+					{!! $item->getContent()->description !!}
 				</div>
 
 				<hr class="hr-thicc-50 my-5 border-light">
 
 				<div id="usage">
-					<h4>Usage</h4>
+					<h4>Usage</h4><br>
 					<ul>
-						{!! $item->usage !!}
+						{!! $item->getContent()->usage !!}
 					</ul>
 				</div>
 
 				<hr class="hr-thicc-50 my-5 border-light">
 
 				<div id="obtaining">
-					<h4>Obtaining</h4>
+					<h4>Obtaining</h4><br>
 					<ul>
-						{!! $item->obtaining !!}
+						{!! $item->getContent()->obtaining !!}
+					</ul>
+				</div>
+
+				<hr class="hr-thicc-50 my-5 border-light">
+
+				<div id="recipe">
+					<h4>Crafting Recipe</h4><br>
+					<ul>
+						@php ($i = 1)
+						@foreach($item->craftingRecipe as $r)
+						<li>
+							<div class="d-flex flex-column">
+								<h5 style="text-decoration: underline;">Recipe #{{$i++}}</h5>
+								{!! $r->renderRecipe() !!}
+							</div>
+						</li>
+						@endforeach
 					</ul>
 				</div>
 			</div>
@@ -89,12 +106,12 @@
 				<div class="flex-shrink-1">
 					<div class="text-center border rounded-lg border-dark item-bg text-dark" style="max-width: calc(0.625rem + 0.5rem + 256px);">
 						<div>
-							<img src="{{asset('images/contents/'.$item->type.'/'.$item->image)}}" class="img-fluid item-large-container item-image m-2" draggable='false' id="item-image"/>
+							<img src="{{$item->getImage()}}" class="img-fluid item-large-container item-image m-2" draggable='false' id="item-image"/>
 						</div>
 						
 						<div class="d-flex flex-row justify-content-center flex-wrap mb-2 px-1" id="item-thumbnail-list">
-							<img class="item-thumbnail item-container cursor-pointer active" src="{{asset('images/contents/'.$item->type.'/'.$item->image)}}" draggable='false' data-minetip="{{ $item->item_name }}"/>
-							<img class="item-thumbnail item-container cursor-pointer" src="{{asset('images/contents/'.$item->type.'/'.(preg_replace('/v1.1/', 'v1.0',$item->image)))}}" draggable='false' data-minetip="{{ (preg_replace('/v1.1/', 'v1.0',$item->image)) }}"/>
+							<img class="item-thumbnail item-container cursor-pointer active" src="{{$item->getImage()}}" draggable='false' data-minetip="{{ $item->item_name }}"/>
+							<img class="item-thumbnail item-container cursor-pointer" src="{{asset('images/contents/'.$item->type.'s/'.(preg_replace('/v2/', 'v1', $item->image)))}}" draggable='false' data-minetip="{{ (preg_replace('/v2/', 'v1',$item->image)) }}" title="TEST"/>
 						</div>
 					</div>
 				</div>
@@ -110,7 +127,11 @@
 
 @section('script')
 <script type="text/javascript">
+	var carousel;
+
 	function activeSelectedItem(list, element, display) {
+		clearInterval(carousel);
+
 		list.removeClass('active');
 		element.addClass('active');
 		
@@ -118,6 +139,12 @@
 			setTimeout(500, display.fadeTo(250, 1));
 			display.attr('src', element.attr('src'));
 		});
+
+		let ii = $('#item-image');
+		let itli = $('#item-thumbnail-list > img.item-thumbnail');
+		carousel = setInterval(function() {
+			activeNextElement(itli, ii);
+		}, 10000);
 	}
 
 	function activeNextElement(list, display) {
@@ -145,6 +172,20 @@
 	}
 
 	$(document).ready(() => {
+		$('[data-scroll-to]').smoothScroll({
+			offset: -($('nav.navbar').outerHeight() + 12.5)
+		});
+
+		$('[data-item-recipe]').each((k,v) => {
+			$(v).craftingRecipe({
+				bg_image: '{{ asset("images/UI/crafting_table.png") }}',
+				type: JSON.parse($(v).text()).recipe_type,
+				result: JSON.parse($(v).text()).result,
+				amount: JSON.parse($(v).text()).amount,
+				isCustomRecipe: true
+			});
+		});
+
 		let ii = $('#item-image');
 		let itli = $('#item-thumbnail-list > img.item-thumbnail');
 
@@ -153,7 +194,7 @@
 			activeSelectedItem(itli, obj, ii);
 		});
 
-		var carousel = setInterval(function() {
+		carousel = setInterval(function() {
 			activeNextElement(itli, ii);
 		}, 10000);
 	});

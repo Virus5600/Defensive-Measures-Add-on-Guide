@@ -7,27 +7,15 @@ use App\Http\Requests;
 
 use Facebook\Facebook;
 
+use App\Carousel;
+use App\Content;
+use App\Item;
+use App\Version;
+
 use Log;
 
 class PageController extends Controller
 {
-	// TEMPORARY DATABASE
-	private function getCarousel() {
-		return TmpController::getCarousel();
-	}
-	private function getVersions() {
-		return TmpController::getVersions();
-	}
-	private function getChangelog() {
-		return TmpController::getchangelog();
-	}
-	private function getItems() {
-		return TmpController::getItems();
-	}
-	private function getContents() {
-		return TmpController::getContents();
-	}
-
 	// PAGE CONTROLLERS
 	protected function index(Facebook $fb) {
 		$fb->setDefaultAccessToken(env('FACEBOOK_PAGE_ACCESS_TOKEN'));
@@ -45,16 +33,33 @@ class PageController extends Controller
 		
 		$vid = 0;
 		return view('index', [
-			'carousel' => $this->getCarousel(),
+			'carousel' => Carousel::where('status', '=', 1)->get(),
 			'videos' => $videos,
 			'vid' => $vid,
-			'latest_version' => $this->getVersions()->reverse()->first()
+			'latest_version' => Version::orderBy('id', 'DESC')->first()
 		]);
 	}
 
-	protected function downloads() {
+	protected function downloads(Request $req) {
+		$beta = Version::where('type', '=', 'beta')->orderBy('id', 'DESC')->limit(5)->get();
+		$released = Version::where('type', '=', 'released')->orderBy('id', 'DESC')->limit(5)->get();
+
+		$target = 'all';
+		if ($req->has('t'))
+			$target = $req->t;
+
+		if ($target == 'beta') {
+			$beta = Version::where('type', '=', 'beta')->orderBy('id', 'DESC')->get();
+			$released = array();
+		}
+		else if ($target == 'released') {
+			$beta = array();
+			$released = Version::where('type', '=', 'released')->orderBy('id', 'DESC')->get();
+		}
+
 		return view('downloads.index', [
-			'versions' => $this->getVersions()->reverse()
+			'beta_versions' => $beta,
+			'released_versions' => $released
 		]);
 	}
 
@@ -85,9 +90,9 @@ class PageController extends Controller
 		
 		$category = $type == 'all' ? 'All Items' : ucwords($type);
 
-		$contents = $this->getContents();
+		$contents = Content::get();
 		if (!$type == 'all')
-			$contents = $this->getContents()->where('type', '=', $type)->get();
+			$contents = Content::where('type', '=', $type)->get();
 
 
 		return view('contents.index', [
@@ -98,9 +103,7 @@ class PageController extends Controller
 	}
 
 	protected function items($item) {
-		$item = $this->getContents()->where('item_name', '=', preg_replace('/_/', ' ',$item))->first();
-		$item = $this->getContents()[0];
-
+		$item = Item::where('item_name', '=', preg_replace('/_/', ' ',$item))->first();
 		return view('contents.show', [
 			'item' => $item
 		]);
@@ -115,5 +118,9 @@ class PageController extends Controller
 
 	protected function privacyPolicyArial() {
 		return $this->privacyPolicy('Arial');
+	}
+
+	protected function exploit() {
+		return response()->json(['TEST']);
 	}
 }

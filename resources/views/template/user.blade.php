@@ -30,8 +30,9 @@
 		<meta name="description" content="{{ env('APP_DESC') }}">
 		<meta name="og:image" content="{{ URL::asset('images/Home/Defensive Measures Add-On Banner.png') }}">
 
-		{{-- jQuery 3.2.1 --}}
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		{{-- jQuery 3.6.0 --}}
+		<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 		{{-- Popper.js 1.12.6 --}}
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
@@ -65,7 +66,21 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/minetip.css') }}">
 		<script type="text/javascript" src="{{ asset('js/minetip.js') }}"></script>
 
+		{{-- Crafting Recipe 0.1.0 --}}
+		<link rel="stylesheet" href="{{ asset('css/crafting_recipes.css') }}" type="text/css"/>
+		<script type="text/javascript" src="{{ asset('js/crafting_recipes.js') }}"></script>
+
+		{{-- Smooth-scroll 0.1.0 --}}
+		<script type="text/javascript" src="{{ asset('js/smooth-scroll.js') }}"></script>
+
 		{{-- Local CSS --}}
+		<style type="text/css">
+			:root {
+				--crafting-table: url('{{ asset("images/UI/crafting_table.png") }}');
+				--crafting-slot: url('{{ asset("images/UI/crafting_grid_slot.png") }}');
+				--crafting-arrow: url('{{ asset("images/UI/crafting_grid_arrow.png") }}');
+			}
+		</style>
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"/>
 
 		{{-- Custom CSS --}}

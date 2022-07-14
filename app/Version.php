@@ -15,4 +15,7 @@ class Version extends Model
 		'mobile_link',
 		'banner'
 	];
+
+	// Relationship
+	protected function changelog() { $this->hasMany('App\Changelog'); }
 }

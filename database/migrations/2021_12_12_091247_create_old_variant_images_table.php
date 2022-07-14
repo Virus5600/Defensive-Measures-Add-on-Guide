@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVersionsTable extends Migration
+class CreateOldVariantImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateVersionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('versions', function (Blueprint $table) {
+        Schema::create('old_variant_images', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ class CreateVersionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('versions');
+        Schema::drop('old_variant_images');
     }
 }

@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/exploit', 'PageController@exploit')->name('exploit');
 
 Route::get('/', 'PageController@index')->name('home');
 Route::get('/installation/{type?}', 'PageController@installation')->name('installation');

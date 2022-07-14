@@ -1,8 +1,9 @@
+* { scroll-behavior: smooth; }
+
 body {
 	font-family: 'Minecraftia';
 	background-color: #F1F5F8;
 	overflow-x: hidden;
-	scroll-behavior: smooth;
 }
 
 p { word-wrap: break-word; }

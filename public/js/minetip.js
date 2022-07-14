@@ -15,24 +15,25 @@ function pos(o, x, y, event) {
 
 $(document).ready(() => {
 	var minetip = document.getElementById("minetip-tooltip");
+	if (minetip != null) {
+		$("[data-minetip]").mousemove(function (event) {
+			let x = -1.25, y = -30;
 
-	$("[data-minetip]").mousemove(function (event) {
-		let x = -1.25, y = -30;
+			if (event.pageX > ($(window).width()/2)) {
+				x = -parseInt($(minetip).outerWidth(true)) + 2.5;
+				y -= 1.25;
+				// y = -parseInt($(minetip).outerHeight(true));
+			}
+			pos(minetip, x, y, event);
+		});
 
-		if (event.pageX > ($(window).width()/2)) {
-			x = -parseInt($(minetip).outerWidth(true)) + 2.5;
-			y -= 1.25;
-			// y = -parseInt($(minetip).outerHeight(true));
-		}
-		pos(minetip, x, y, event);
-	});
+		$('[data-minetip]').mouseover((e) => {
+			$(minetip).text($(e.currentTarget).attr('data-minetip'));
+			$(minetip).css('display', 'block');
+		}).mouseout((e) => {
+			$(minetip).css('display', 'none');
+		});
 
-	$('[data-minetip]').mouseover((e) => {
-		$(minetip).text($(e.currentTarget).attr('data-minetip'));
-		$(minetip).css('display', 'block');
-	}).mouseout((e) => {
-		$(minetip).css('display', 'none');
-	});
-
-	minetip.style.display = "none";
+		minetip.style.display = "none";
+	}
 });

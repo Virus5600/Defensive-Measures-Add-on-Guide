@@ -1,0 +1,115 @@
+.crafting-table {
+	position: relative;
+	width: 32em;
+	height: 16em;
+}
+
+.crafting-table > img.bg-ui {
+	width: 100%;
+	height: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+
+.crafting-table > div.crafting-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	z-index: 1;
+	padding: 1rem;
+}
+
+.crafting-table * {
+	z-index: 1;
+}
+
+.crafting-table > div.crafting-container > .crafting-grid {
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 45%;
+	height: 75%;
+	display: flex;
+	flex-direction: column;
+}
+
+.crafting-table > div.crafting-container > .crafting-grid > .crafting-row {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	width: calc(100%/1.25);
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+}
+
+.crafting-table > div.crafting-container > .crafting-grid > .crafting-row > .crafting-slot {
+	background-image: url('/images/UI/crafting_grid_slot.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 5rem;
+	flex-grow: 1;
+}
+
+.crafting-table > div.crafting-container > .crafting-grid > .crafting-row > .crafting-slot > .crafting-item {
+	max-width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: auto;
+	padding: 0.25rem;
+}
+
+.crafting-table > div.crafting-container > .crafting-arrow {
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	vertical-align: middle;
+}
+
+.crafting-table > div.crafting-container > .crafting-arrow > img {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.crafting-table > div.crafting-container > .crafting-result-container {
+	width: 35%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.crafting-table > div.crafting-container > .crafting-result-container > .crafting-result {
+	margin: auto;
+	width: 5rem;
+	height: 5rem;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.crafting-table > div.crafting-container > .crafting-result-container > .crafting-result > .crafting-result-image {
+	max-width: 100%;
+	background-image: url('/images/UI/crafting_grid_slot.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: auto;
+	padding: 0.25rem;
+}
+
+.crafting-table > div.crafting-container > .crafting-result-container > .crafting-result > .crafting-result-amount {
+	position: absolute;
+	font-size: x-large;
+	bottom: 2.5px;
+	right: 10px;
+}

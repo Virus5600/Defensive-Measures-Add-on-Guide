@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Changelog extends Model
 {
     protected $fillable = [
-        'version',
+        'version_id',
         'type',
         'changelog'
     ];
