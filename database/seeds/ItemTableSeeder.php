@@ -24,8 +24,8 @@ class ItemTableSeeder extends Seeder
 		Item::create([
 			'id' => 2,
 			'type' => 'item',
-			'item_name' => 'Iron Ingot',
-			'image' => 'https://i.imgur.com/0g3T8wy.png'
+			'item_name' => 'Iron Nugget',
+			'image' => 'https://i.imgur.com/OQe0Y2D.png'
 		]);
 
 		Item::create([
